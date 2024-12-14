@@ -1,0 +1,20 @@
+# List to represent free memory blocks (in units)
+memory_blocks = [100, 200, 50]  # Sizes of free memory blocks
+# Request size
+request_size = 80
+
+
+# Initialize variables to track the largest block
+largest_block = -1
+largest_index = -1
+
+# Loop through the blocks to find the largest fitting block
+for i, size in enumerate(memory_blocks):
+    if size >= request_size and size > largest_block:
+        largest_block = size
+        largest_index = i
+if largest_index != -1:  # A suitable block was found
+    print(f"Allocating {request_size} from block of size {largest_block}.")
+    memory_blocks[largest_index] -= request_size
+else:
+    print("Allocation failed: No suitable block found.")
